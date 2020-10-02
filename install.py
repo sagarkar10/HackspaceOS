@@ -7,6 +7,8 @@ if system == 'Windows':
 else:
     main_folder_path = os.path.dirname(
         os.path.abspath(__file__))
+
+    env = main_folder_path+"/HackspaceOSVenv/bin/activate"
     python = main_folder_path+"/HackspaceOSVenv/bin/python"
     pip = main_folder_path+"/HackspaceOSVenv/bin/pip"
 
@@ -15,7 +17,8 @@ else:
         os.system('python3 -m venv HackspaceOSVenv')
 
     print('Installing requirements.txt...')
-    os.system('cat requirements.txt | xargs -n 1 {} install'.format(pip))
-
+    os.system("source {}; pip install -r requirements.txt".format(env))
+    #os.system('cat requirements.txt | xargs -n 1 {} install'.format(pip))
+    #os.system('pip install -r requirements.txt')
     print('Start / setup server')
     os.system(python+' manage.py runserver')

@@ -1,6 +1,7 @@
 import json
 import os
 import time
+from pyprintplus import Log
 
 
 class Config():
@@ -35,7 +36,6 @@ class Config():
             self.value = None
 
     def log(self, text):
-        from pyprintplus import Log
         self.logs.append(text)
         if self.show_log == True:
             Log().print('{}'.format(text), os.path.basename(__file__), self.started)

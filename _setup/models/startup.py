@@ -100,6 +100,7 @@ class Startup():
                         '{} layout unchanged'.format(file))
 
     def check_mode_testing(self):
+        return True
         # ask if user is sure about running server in TEST mode?
         self.log('Checking MODE ...')
         MODE = Config('MODE.SELECTED').value

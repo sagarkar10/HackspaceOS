@@ -20,8 +20,8 @@ class OpenStatus():
             translated_status = landingpage('Open now', language)
             color_indicator = 'green'
         else:
-            timezone = pytz.timezone(Config(
-                'PHYSICAL_SPACE.TIMEZONE_STRING').value)
+            timezone = pytz.timezone('utc')
+            #Config('PHYSICAL_SPACE.TIMEZONE_STRING').value)
             today_weekday = calendar.day_name[datetime.now(timezone).weekday()]
             now_hour = datetime.now(timezone).hour
             now_minute = datetime.now(timezone).minute
