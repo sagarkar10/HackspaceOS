@@ -48,9 +48,13 @@ class Startup():
             Setup()._menu()
         elif not Setup().database_exists:
             from django.core.management import call_command
-            call_command('makemigrations')
-            call_command('migrate')
-            call_command('update_database')
+            try:
+                call_command('makemigrations')
+                call_command('migrate')
+                call_command('update_database')
+            except Exception as E:
+                Log().show_message('makemigrations, migrate, update_database
+                                   skipped for now, lets run it later')
 
     def check_config_uptodate(self, file):
         self.log('Checking if {}.json is up to date ...'.format(file))
